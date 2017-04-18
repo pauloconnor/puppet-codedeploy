@@ -20,7 +20,7 @@ class codedeploy::install {
     }
     'Debian': {
       exec { 'download_codedeploy_installer':
-        command => '/usr/bin/wget http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install /tmp/install',
+        command => '/usr/bin/wget http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install -O /tmp/install',
         cwd     => '/tmp',
         creates => '/tmp/install',
       } ->
