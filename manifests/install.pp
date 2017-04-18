@@ -23,7 +23,7 @@ class codedeploy::install {
         command => '/usr/bin/wget http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install /tmp/install',
         cwd     => '/tmp',
         creates => '/tmp/install',
-      }
+      } ->
       file { '/tmp/install':
         ensure    => file,
         owner     => 'root',
@@ -31,9 +31,9 @@ class codedeploy::install {
         mode      => '0740',
         subscribe => Exec['download_codedeploy_installer'],
         notify    => Exec['install_codedeploy_agent'],
-      }
+      } ->
       exec { 'install_codedeploy_agent':
-        command     => '/tmp/install auto',
+        command     => '/bin/bash /tmp/install auto',
         cwd         => '/tmp',
         refreshonly => true,
       }
