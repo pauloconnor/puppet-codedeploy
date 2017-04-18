@@ -33,7 +33,7 @@ class codedeploy::install {
         notify    => Exec['install_codedeploy_agent'],
       }
       exec { 'install_codedeploy_agent':
-        command     => '/bin/bash /tmp/install auto',
+        command     => '/tmp/install auto',
         cwd         => '/tmp',
         refreshonly => true,
       }
