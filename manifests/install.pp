@@ -19,13 +19,8 @@ class codedeploy::install {
       }
     }
     'Debian': {
-      if ! defined(Package['awscli']) {
-        package { 'awscli':
-          ensure => present,
-        }
-      }
       exec { 'download_codedeploy_installer':
-        command => '/usr/local/bin/aws s3 cp http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install . --region us-east-1',
+        command => '/usr/bin/wget http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install . --region us-east-1',
         cwd     => '/tmp',
         creates => '/tmp/install',
       }
