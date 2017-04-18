@@ -25,7 +25,7 @@ class codedeploy::install {
         }
       }
       exec { 'download_codedeploy_installer':
-        command => '/usr/local/bin/aws s3 cp http://us-east-1.s3.amazonaws.com/latest/install . --region us-east-1',
+        command => '/usr/local/bin/aws s3 cp http://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install . --region us-east-1',
         cwd     => '/tmp',
         creates => '/tmp/install',
       }
